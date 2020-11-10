@@ -1,0 +1,147 @@
+<view class="weui-tabs">
+  <view class="weui-tabs-bar__scrollMenuBorder">
+    <view class="weui-tabs-bar__wrp {{scrollViewClass}}">
+      <scroll-view scroll-x scroll-into-view="item_{{currentView}}">
+        <view class="weui-tabs-bar__content">
+          <block wx:for="{{tabs}}" wx:key="title">
+            <view id="item_{{index}}" data-existattr="{{item.existAttr}}" data-typeattrid="{{item.typeAttrId}}"
+              class="weui-tabs-bar__item"
+              style="background-color: {{tabBackgroundColor}}; color: {{activeTab === index ? tabActiveTextColor : tabInactiveTextColor}};"
+              bindtap="handleTabClick" data-index="{{index}}">
+              <view class="weui-tabs-bar__title {{tabClass}} {{activeTab === index ? activeClass : ''}}"
+                style="border-bottom-color: {{activeTab === index ? tabUnderlineColor : 'transparent'}}">
+                <text class="">{{item.title}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="weui-tabs-bar__scrollRightMenu">
+      <button plain="true" catchtap="rightMenu">
+        <image src="/assets/images/moremenu.png" mode='widthFix' />
+      </button>
+    </view>
+  </view>
+  <!-- 属性 -->
+  <!--  style="display:{{existAttr?'block':'none'}}" -->
+  <block wx:for="{{tabs}}" wx:for-index="idx" wx:key="title" wx:for-item="menus" wx:if="{{menus.existAttr}}">
+    <view class="attrDatas" data-index="{{idx}}" style="display:{{activeTab==idx?'block':'none'}}">
+      <!-- 选中的子属性 -->
+      <view class="selectedSubAttribute" style="display:none">
+        <view class="weui-tabs-bar__wrpSelected">
+          <scroll-view scroll-x>
+            <view class="weui-tabs-bar__contentSelected">
+              <block wx:for="{{tabs}}" wx:key="title">
+                <view class="weui-tabs-bar__itemSelected">
+                  <view class="weui-tabs-bar__titleSelected weui-tabs-bar__tabClass">
+                    <text class="">{{item.title}}德累斯顿</text>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+      <!-- 子属性 -->
+      <view class="subAttribute">
+        <view class="weui-flex">
+          <block wx:for="{{menus.attrData}}" wx:for-index="idx" wx:key="attrId" wx:for-item="attrData">
+            <view class="weui-flex__item">
+              <view id="{{idx}}" class="subAttribute-item {{typeAttrId==attrData.typeAttrId?'subAttribute-itemSelected':''}}"
+                bindtap="showRule">
+                <text class="">{{attrData.attrName}}</text>
+                <image src="/assets/images/{{activeSubAttrTabIdx==1?'up':'down'}}.png" />
+              </view>
+              <!-- 下拉展示页面 （属性点击） -->
+              <view class="float-clike {{activeSubAttrTabIdx==1?'isRuleShow-clike':'isRuleHide-clike'}} ">
+                <view class="animation-element-clike">
+                  <view class='subAttrBox'>
+                    <view class="subAttrItem" wx:for="{{attrData.subAttrData}}" wx:key="idx" wx:for-index="indx">
+                      {{attrData.subAttrData.ItemAttributesFullName}}
+                    </view>
+                    <!-- <view class="subAttrItem">
+                    社区
+                  </view>
+                  <view class="subAttrItem">
+                    商合体
+                  </view>
+                  <view class="subAttrItem">
+                    商业综合体
+                  </view> -->
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <!-- style="display:none" -->
+          <!-- <view class="weui-flex__item">
+          <view id="4" class="subAttribute-item {{activeSubAttrTabIdx==4?'subAttribute-itemSelected':''}}"
+            catchtap="translate">
+            <text class="">更多</text>
+            <image src="/assets/images/{{activeSubAttrTabIdx==4?'right':'left'}}.png" />
+          </view>
+        </view> -->
+        </view>
+      </view>
+      <!-- 右边切入页面 （更多点击） -->
+      <view class="float {{isRuleTrue?'isRuleShow':'isRuleHide'}} ">
+        <view class="animation-element" animation="{{animation}}">
+          <view class='use'>
+            <view class='iconuse'>用途</view>
+            <ul class="useage">
+              <li style="background:{{background}};">全部</li>
+              <li>经济实惠型</li>
+              <li>家用学习型</li>
+            </ul>
+            <ul class="useage">
+              <li style="background:{{background}};">豪华发烧型</li>
+              <li>疯狂游戏型</li>
+              <li>商务办公型</li>
+            </ul>
+            <ul class="useage">
+              <li>经济实惠型</li>
+              <li>家用学习型</li>
+            </ul>
+          </view>
+          <!-- 价格 -->
+          <view class='use'>
+            <view class='iconprice'>价格</view>
+            <ul class="useage">
+              <li style="background:{{background}};">全部</li>
+              <li>经济实惠型</li>
+              <li>家用学习型</li>
+            </ul>
+            <ul class="useage">
+              <li style="background:{{background}};">豪华发烧型</li>
+              <li>疯狂游戏型</li>
+              <li>商务办公型</li>
+            </ul>
+            <ul class="useage">
+              <li>经济实惠型</li>
+              <li>家用学习型</li>
+            </ul>
+
+          </view>
+
+          <view class='buttom'>
+            <!-- <view class="animation-reset">重置</view> -->
+            <view class="animation-button" bindtap="closeRight">完成</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 内容滚动区域 -->
+  <swiper class="{{swiperClass}}" current="{{activeTab}}" duration="{{duration}}" bindchange="handleSwiperChange">
+    <swiper-item wx:for="{{tabs}}" wx:key="title" item-existAttr="{{existAttr}}">
+      <view class="tab-content">
+        <scroll-view enable-back-to-top="{{true}}" class="scrollView" refresher-triggered="{{refresherTriggered}}"
+          scroll-y="true" refresher-enabled="true" bindrefresherrefresh="bindrefresherrefresh"
+          bindscrolltolower="bindscrolltolower">
+          <slot name="tab-content-{{index}}"></slot>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

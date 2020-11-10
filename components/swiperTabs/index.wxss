@@ -1,0 +1,231 @@
+@import '../../assets/wxss/weui.wxss';
+
+.weui-tabs {
+  width: 100%
+}
+
+.weui-tabs-bar__scrollMenuBorder {
+  height: 50rpx;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10rpx;
+}
+
+.weui-tabs-bar__wrp {
+  width: 94%;
+  /* 100% */
+  background: #fff
+}
+
+/* 右边菜单开始 */
+.weui-tabs-bar__scrollRightMenu {
+  z-index: 100;
+  float: right;
+  margin-top: -25px;
+}
+
+.weui-tabs-bar__scrollRightMenu button {
+  background: white;
+  width: 24px !important;
+  height: 24px;
+  padding: 0;
+  border: none;
+}
+
+.weui-tabs-bar__scrollRightMenu image {
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}
+
+/* 右边菜单结束 */
+
+
+.weui-tabs-bar__content {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.weui-tabs-bar__item {
+  display: inline-block;
+}
+
+.weui-tabs-bar__title {
+  display: inline-block;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent
+}
+
+/* 选中的子属性 */
+.weui-tabs-bar__wrpSelected {
+  width: 100%;
+  background: #fff
+}
+
+.weui-tabs-bar__contentSelected {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.weui-tabs-bar__itemSelected {
+  display: inline-block;
+}
+
+.weui-tabs-bar__titleSelected {
+  display: inline-block;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent
+}
+
+.weui-tabs-bar__tabClass {
+  height: 45rpx;
+  line-height: 45rpx;
+  font-size: 25rpx;
+  padding: 0 30rpx;
+  margin-left: 30rpx;
+  color: rgb(145, 2, 2);
+  background: rgb(212, 133, 133);
+  border-radius: 5px;
+  border-bottom-width: none !important;
+  border-bottom-style: none !important;
+}
+
+/* 子属性 */
+.subAttribute .subAttribute-wrp {
+  width: 100%;
+  background: #fff;
+}
+.subAttribute .subAttribute-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+}
+.subAttribute .subAttribute-itemSelected{
+  color: red;
+}
+.subAttribute .subAttribute-item text {
+  font-size: 14px;
+}
+
+.subAttribute .subAttribute-item image {
+  height: 18px;
+  width: 18px;
+}
+/* 属性点击弹出 */
+.isRuleShow-clike {
+  display: block;
+}
+.isRuleHide-clike {
+  display: none;
+}
+.float-clike {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  top: 0;
+  left: 0;
+  margin-top:170rpx;
+}
+.animation-element-clike {
+  width: 100%;
+  height: 80%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-around;
+  align-items: center;
+  position: relative; */
+}
+
+.subAttrBox{
+  flex: column;
+  flex-wrap: wrap;
+  flex-flow:  space-around;
+  display: inline-flex;
+  /* justify-content: flex-start; */
+}
+.subAttrItem{
+  width: 170rpx;
+  margin: 12rpx 7rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border: 1px solid #f3f0f0;
+  border-radius: 15rpx;
+  font-size: 30rpx;
+}
+
+
+/* 右边更多切入内容 */
+.isRuleShow {
+  display: block;
+}
+.isRuleHide {
+  display: none;
+}
+.float {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  top: 0;
+  left: 0;
+  margin-top:170rpx;
+}
+
+.iconuse {
+  margin-left: 11rpx;
+}
+.iconprice {
+  margin-left: 11rpx;
+}
+.animation-element {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border: 1px solid #f3f0f0;
+  position: absolute;
+  right: -572rpx;
+  /* overflow-y: auto; */
+  /* margin-top: 180rpx; */
+}
+.useage {
+  height: 40rpx;
+}
+.useage li {
+  width: 177rpx;
+  margin: 12rpx 7rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #f3f0f0;
+  border-radius: 15rpx;
+  font-size: 30rpx;
+}
+.buttom {
+  /* position: fixed;
+  bottom: 0; */
+  margin-top: 30rpx;
+}
+/* .animation-reset {
+  float: left;
+  line-height: 2;
+  width: 260rpx;
+  margin: 15rpx 12rpx;
+  border: 1px solid #f3f0f0;
+  text-align: center;
+} */
+.animation-button {
+  float: left;
+  line-height: 2;
+  width: 80%;
+  margin: 15rpx 12rpx;
+  border: 1px solid #f3f0f0;
+  text-align: center;
+}
