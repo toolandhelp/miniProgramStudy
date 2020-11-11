@@ -101,12 +101,40 @@ Page({
       }
     }
 
-
+    // 获取档案库数据
     var getlistUrl = baseUrl + 'ItemList/GetItemListData';
+    //
+    var typeData = this.data.tabs[this.data.activeTab];
+    if (typeData != null) {
+      if (typeData.attrData.length != 0) { //档案库
+        var para= {
+          "ClassTypeArrList": [
+            {
+              "AttrKey": typeData.typeAttrId,
+              "AttrValue": "DesignLib"
+            }
+          ],
+          "Pagination": {
+            "SortType": 1,
+            "KeyWords": "",
+            "Order": true,
+            "Page": 0,
+            "Rows": 0
+          }
+        }
 
-    if (this.data.activeTab % 2 != 0) {
-      step = 0;
+        util.request_method_post_data(getlistUrl,para,(res) => {
+          debugger;
+          if (res.Success) {
+           console.log(res.Data.RspItemDatas);
+          }
+        });
+      }
     }
+
+    // if (this.data.activeTab % 2 != 0) {
+    //   step = 0;
+    // }
     if (this.data.pageIndex === this.data.totalPage && this.data.pageIndex > 1) {
       step = this.data.total - step * (this.data.pageIndex - 1)
     }
