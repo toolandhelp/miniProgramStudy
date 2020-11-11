@@ -75,7 +75,6 @@ Page({
 
     /*使用服务器端数据 */
     var appMenus = wx.getStorageSync('GetAppMenus');
-   
     if (appMenus != "") {
       //console.log("使用缓存数据")
       this.setData({ tabs: appMenus });
@@ -103,7 +102,7 @@ Page({
     }
 
 
-
+    var getlistUrl = baseUrl + 'ItemList/GetItemListData';
 
     if (this.data.activeTab % 2 != 0) {
       step = 0;
@@ -161,15 +160,12 @@ Page({
   /* app菜单转换 处理第一级菜单数据*/
   appMenusCreate(menusData) {
     var tabs = new Array();
-
-
     if (menusData != null && menusData != '') {
       // web菜单
       if (menusData.WebMenus != null && menusData.WebMenus != '') {
         menusData.WebMenus.forEach((menu, i) => {
           tabs[i] = {
             title: menu.MenuName,
-            existAttr: false,
             typeAttrId: '',
             attrData:  []
           }
@@ -200,7 +196,6 @@ Page({
           }
           tabs.push({
             title: menu.ItemAttributesFullName,
-            existAttr: true,
             typeAttrId: menu.ItemAttributesId,
             attrData: attrData
           });

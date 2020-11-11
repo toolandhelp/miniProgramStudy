@@ -126,9 +126,10 @@ module.exports =
             activeTab: { type: Number, value: 0 },
             duration: { type: Number, value: 500 },
             refresherTriggered: { type: Boolean, value: false },
-           // existAttr: { type: Boolean, value: false }, //是否有属性列表
-           // typeAttrId:{type:String,value:''}, //类型属性id
+            // existAttr: { type: Boolean, value: false }, //是否有属性列表
+            // typeAttrId:{type:String,value:''}, //类型属性id
             activeAttrTabIdx: { type: Number, value: 0 }, //属性列表选择
+            existActiveAttrTabIdx: { type: Boolean, value: false },//属性是否为打开状态
             //attrData: { type: Array, value: [] } //属性提出来
           },
           data: {
@@ -136,7 +137,7 @@ module.exports =
           },
           observers: {
             activeTab: function activeTab(_activeTab) {
-             // debugger
+              // debugger
               var len = this.data.tabs.length;
               if (len === 0) return;
               var currentView = _activeTab - 1;
@@ -152,13 +153,9 @@ module.exports =
           methods: {
             handleTabClick: function handleTabClick(e) {
               var index = e.currentTarget.dataset.index;
-             //  var existAttr = e.currentTarget.dataset.existattr;
-             // var typeAttrId = e.currentTarget.dataset.typeattrid;
-
               this.setData({
                 activeTab: index,
-               // existAttr: existAttr,
-               // typeAttrId:typeAttrId
+                activeAttrTabIdx: 0
               });
               this.triggerEvent('tabclick', { index: index });
             },
@@ -166,6 +163,7 @@ module.exports =
               var index = e.detail.current;
               this.setData({
                 activeTab: index,
+                activeAttrTabIdx: 0
               });
               this.triggerEvent('swiperChange', { index: index });
             },
@@ -178,29 +176,33 @@ module.exports =
             /** 点击子属性开始 */
             //打开透明层
             showRule: function showRule(e) {
-              if (!this.data.isRuleTrueClike) {
-                this.setData({
-                  activeSubAttrTabIdx: e.currentTarget.id,
-                  isRuleTrueClike: true
-                })
-              } else {
-                this.hideRule();
-              }
+              console.log(`activeAttrTabIdx[`+this.data.activeAttrTabIdx+`]--currentTarget:`+e.currentTarget.id);
+              //debugger
+              this.setData({
+                activeAttrTabIdx: Number(e.currentTarget.id) + 1,
+                existActiveAttrTabIdx: true
+              })
+              // this.closeRight();
+              // if (e.currentTarget.id !== (this.data.activeAttrTabIdx-1)) {
+              //   this.hideRule();
+              // }
             },
             //关闭透明层
             hideRule: function hideRule() {
               this.setData({
-                isRuleTrueClike: false
+                activeAttrTabIdx: 0,
+                existActiveAttrTabIdx: false
               })
             },
             /** 点击子属性结束 */
-
             /**右边切入代码 开始 */
             translate: function translate() {
+              //debugger
               this.animation = wx.createAnimation();
-
+              this.hideRule();
               if (!this.data.isRuleTrue) {
                 this.setData({
+                  activeAttrTabIdx: 6,
                   isRuleTrue: true
                 })
                 this.animation.translate(-245, 0).step()
@@ -210,7 +212,8 @@ module.exports =
               }
             },
             closeRight: function closeRight() {
-              this.setData({
+                this.setData({
+                activeAttrTabIdx: 0,
                 isRuleTrue: false
               })
               this.animation.translate(0, 0).step()
@@ -225,6 +228,13 @@ module.exports =
             /*下拉刷新*/
             bindrefresherrefresh() {
               this.triggerEvent('bindrefresherrefresh');
+            },
+
+            /*点击属性*/
+            selectSubAttr: function selectSubAttr(e){
+              var itemlist ="https://www.api.jzbl.com/api/ItemList/GetItemListData";
+
+              console.log(e);
             }
           }
         });

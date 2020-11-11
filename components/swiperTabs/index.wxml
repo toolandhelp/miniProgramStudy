@@ -24,8 +24,8 @@
     </view>
   </view>
   <!-- 属性 -->
-  <!--  style="display:{{existAttr?'block':'none'}}" -->
-  <block wx:for="{{tabs}}" wx:for-index="idx" wx:key="title" wx:for-item="menus" wx:if="{{menus.existAttr}}">
+  <!-- {{menus.attrData.length>0}}=={{menus.existAttr}} -->
+  <block wx:for="{{tabs}}" wx:for-index="idx" wx:key="title" wx:for-item="menus" wx:if="{{menus.attrData.length>0}}">
     <view class="attrDatas" data-index="{{idx}}" style="display:{{activeTab==idx?'block':'none'}}">
       <!-- 选中的子属性 -->
       <view class="selectedSubAttribute" style="display:none">
@@ -47,83 +47,73 @@
       <view class="subAttribute">
         <view class="weui-flex">
           <block wx:for="{{menus.attrData}}" wx:for-index="idx" wx:key="attrId" wx:for-item="attrData">
-            <view class="weui-flex__item">
-              <view id="{{idx}}" class="subAttribute-item {{typeAttrId==attrData.typeAttrId?'subAttribute-itemSelected':''}}"
-                bindtap="showRule">
+            <view class="weui-flex__item" wx:if="{{menus.attrData.length<=5}}">
+              <!-- subAttribute-itemSelected -->
+              <view id="{{idx}}" class="subAttribute-item {{activeAttrTabIdx==(idx+1)?'subAttribute-itemSelected':''}}"
+                data-attrId="{{attrData.attrId}}" bindtap="showRule">
                 <text class="">{{attrData.attrName}}</text>
-                <image src="/assets/images/{{activeSubAttrTabIdx==1?'up':'down'}}.png" />
+                <image src="/assets/images/{{activeAttrTabIdx==(idx+1)?'up':'down'}}.png" />
               </view>
-              <!-- 下拉展示页面 （属性点击） -->
-              <view class="float-clike {{activeSubAttrTabIdx==1?'isRuleShow-clike':'isRuleHide-clike'}} ">
+              <!-- 下拉展示页面 （属性点击） isRuleShow-clike isRuleHide-clike -->
+              <view id="{{idx}}"
+                class="float-clike {{activeAttrTabIdx==(idx+1)?' isRuleShow-clike':'isRuleHide-clike'}}">
                 <view class="animation-element-clike">
                   <view class='subAttrBox'>
-                    <view class="subAttrItem" wx:for="{{attrData.subAttrData}}" wx:key="idx" wx:for-index="indx">
-                      {{attrData.subAttrData.ItemAttributesFullName}}
+                    <view class="subAttrItem" wx:for="{{attrData.subAttr}}" data-subAttrId="{{subAttr.subAttrId}}"
+                      wx:for-item="subAttr" wx:key="idx" wx:for-index="indx" bindtap="selectSubAttr">
+                      {{subAttr.subAttrName}}
                     </view>
-                    <!-- <view class="subAttrItem">
-                    社区
                   </view>
-                  <view class="subAttrItem">
-                    商合体
-                  </view>
-                  <view class="subAttrItem">
-                    商业综合体
-                  </view> -->
+                </view>
+              </view>
+            </view>
+            <view class="weui-flex__item" wx:elif="{{menus.attrData.length>5&&idx<4}}">
+              <!-- subAttribute-itemSelected -->
+              <view id="{{idx}}" class="subAttribute-item {{activeAttrTabIdx==(idx+1)?'subAttribute-itemSelected':''}}"
+                data-attrId="{{attrData.attrId}}" bindtap="showRule">
+                <text class="">{{attrData.attrName}}</text>
+                <image src="/assets/images/{{activeAttrTabIdx==(idx+1)?'up':'down'}}.png" />
+              </view>
+              <!-- 下拉展示页面 （属性点击） isRuleShow-clike isRuleHide-clike -->
+              <view id="{{idx}}"
+                class="float-clike {{activeAttrTabIdx==(idx+1)?' isRuleShow-clike':'isRuleHide-clike'}}">
+                <view class="animation-element-clike">
+                  <view class='subAttrBox'>
+                    <view class="subAttrItem" wx:for="{{attrData.subAttr}}" data-subAttrId="{{subAttr.subAttrId}}"
+                      wx:for-item="subAttr" wx:key="idx" wx:for-index="indx">
+                      {{subAttr.subAttrName}}
+                    </view>
                   </view>
                 </view>
               </view>
             </view>
           </block>
           <!-- style="display:none" -->
-          <!-- <view class="weui-flex__item">
-          <view id="4" class="subAttribute-item {{activeSubAttrTabIdx==4?'subAttribute-itemSelected':''}}"
-            catchtap="translate">
-            <text class="">更多</text>
-            <image src="/assets/images/{{activeSubAttrTabIdx==4?'right':'left'}}.png" />
+          <view class="weui-flex__item" wx:if="{{menus.attrData.length>5}}">
+            <view id="6" class="subAttribute-item {{activeAttrTabIdx==6?'subAttribute-itemSelected':''}}"
+              catchtap="translate">
+              <text class="">更多</text>
+              <image src="/assets/images/{{activeAttrTabIdx==6?'right':'left'}}.png" />
+            </view>
           </view>
-        </view> -->
+
         </view>
       </view>
       <!-- 右边切入页面 （更多点击） -->
-      <view class="float {{isRuleTrue?'isRuleShow':'isRuleHide'}} ">
+      <view wx:if="{{menus.attrData.length>5}}" class="float {{isRuleTrue?'isRuleShow':'isRuleHide'}} ">
         <view class="animation-element" animation="{{animation}}">
-          <view class='use'>
-            <view class='iconuse'>用途</view>
-            <ul class="useage">
-              <li style="background:{{background}};">全部</li>
-              <li>经济实惠型</li>
-              <li>家用学习型</li>
-            </ul>
-            <ul class="useage">
-              <li style="background:{{background}};">豪华发烧型</li>
-              <li>疯狂游戏型</li>
-              <li>商务办公型</li>
-            </ul>
-            <ul class="useage">
-              <li>经济实惠型</li>
-              <li>家用学习型</li>
-            </ul>
-          </view>
-          <!-- 价格 -->
-          <view class='use'>
-            <view class='iconprice'>价格</view>
-            <ul class="useage">
-              <li style="background:{{background}};">全部</li>
-              <li>经济实惠型</li>
-              <li>家用学习型</li>
-            </ul>
-            <ul class="useage">
-              <li style="background:{{background}};">豪华发烧型</li>
-              <li>疯狂游戏型</li>
-              <li>商务办公型</li>
-            </ul>
-            <ul class="useage">
-              <li>经济实惠型</li>
-              <li>家用学习型</li>
-            </ul>
-
-          </view>
-
+          <scroll-view  scroll-y style="height:80%;">
+          <block wx:for="{{menus.attrData}}" wx:if="{{idx>=4}}" wx:for-index="idx" wx:key="attrId" wx:for-item="attrData" >
+            <view class='use'>
+              <view class='iconuse' data-attrId="{{attrData.attrId}}">{{attrData.attrName}}</view>
+              <ul class="useage" wx:for="{{attrData.subAttr}}" data-subAttrId="{{subAttr.subAttrId}}"
+                      wx:for-item="subAttr" wx:key="idx" wx:for-index="indx">
+                <!-- <li style="background:{{background}};">全部</li> -->
+                <li data-subAttrId="{{subAttr.subAttrId}}">{{subAttr.subAttrName}}</li>
+              </ul>
+            </view>
+          </block>
+        </scroll-view>
           <view class='buttom'>
             <!-- <view class="animation-reset">重置</view> -->
             <view class="animation-button" bindtap="closeRight">完成</view>
