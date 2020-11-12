@@ -1,0 +1,108 @@
+.content {
+  /*flex布局  */
+  display: flex;
+  /*纵向布局  */
+  flex-direction: column;
+  /*布局居中  */
+  align-items: center;
+}
+
+/*横向布局  */
+.layout_horizontal {
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
+
+/*纵向布局  */
+.layout_vertical {
+  /* height: 100rpx; */
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: column;
+}
+
+.top {
+  height: 120rpx;
+  margin: 15rpx 30rpx;
+  /* justify-content: center; */
+}
+
+.userInfo {
+  /* margin: 15px; */
+  flex: 1;
+}
+
+/*头部图片 */
+.userAvatar {
+  border-radius: 120rpx;
+  height: 120rpx;
+  width: 120rpx;
+}
+
+.userNames {
+  margin: 10rpx 0rpx 0rpx 25rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.publishOrType {
+  width: 150px;
+}
+
+.publishOrType text {
+  font-size: 28rpx;
+  color: gray;
+}
+
+.publishOrType label {
+  font-size: 28rpx;
+  color: red;
+  background-color: gainsboro;
+  margin-left: 10rpx;
+  padding: 5rpx 18rpx;
+  border-radius: 10rpx;
+}
+
+.followOrReport {
+  flex: 1;
+  /* background: red; */
+  text-align: right;
+  margin: auto;
+  /* margin-right: 15rpx; */
+}
+
+.followOrReport text {
+  font-size: 46rpx;
+  color: orangered;
+  /* margin-right: 10rpx; */
+}
+
+.followOrReport icon {
+  margin: -12rpx 15rpx 0rpx 15rpx;
+}
+
+.summaryArticle {
+  margin: 15px 10px;
+}
+
+.summaryArticle text {
+  /*定义为自适应布局  */
+  display: -webkit-box;
+  word-break: break-all;
+  /*超出文字用省略号代替  */
+  text-overflow: ellipsis;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  /*多出不分隐藏  */
+  overflow: hidden;
+  /*竖直方向的超出和隐藏  */
+  -webkit-box-orient: vertical;
+  /* 设定行数为3  */
+  -webkit-line-clamp: 3;
+
+  /* white-space: nowrap;   */
+}

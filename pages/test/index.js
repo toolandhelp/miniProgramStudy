@@ -82,7 +82,7 @@ Page({
     } else {
       var appAllMenus = wx.getStorageSync('AppAllMenus');
       if (appAllMenus != "") {    //可要可不要
-       // var okdata = this.appMenusCreate(appAllMenus); //处理出第一级菜单数据
+        var okdata = this.appMenusCreate(appAllMenus); //处理出第一级菜单数据
         wx.setStorageSync('GetAppMenus', okdata);
         this.setData({ tabs: okdata });
 
@@ -101,9 +101,25 @@ Page({
       }
     }
 
-    // 获取档案库数据
-    var getlistUrl = baseUrl + 'ItemList/GetItemListData';
-    //
+    
+       // 获取档案库数据
+     var getlistUrl = baseUrl + 'ItemList/GetItemListData';
+    // if (this.data.activeTab % 2 != 0) {
+    //   step = 0;
+    // }
+    // if (this.data.pageIndex === this.data.totalPage && this.data.pageIndex > 1) {
+    //   step = this.data.total - step * (this.data.pageIndex - 1)
+    // }
+    wx.showLoading({
+      title: '加载中',
+    })
+    setTimeout(() => {
+      debugger
+      // for (let i = formNumber; i < formNumber + step; i++) {
+      //   //newArr.push(i)
+      //   newArr.push()
+      // }
+
     var typeData = this.data.tabs[this.data.activeTab];
     if (typeData != null) {
       if (typeData.attrData.length != 0) { //档案库
@@ -122,29 +138,19 @@ Page({
             "Rows": 0
           }
         }
-
         util.request_method_post_data(getlistUrl,para,(res) => {
-          debugger;
+          // debugger;
           if (res.Success) {
-           console.log(res.Data.RspItemDatas);
+            debugger
+            newArr=res.Data.RspItemDatas;
+            //newArr.push(res.Data.RspItemDatas);
+            console.log(res.Data);
           }
         });
       }
     }
 
-    // if (this.data.activeTab % 2 != 0) {
-    //   step = 0;
-    // }
-    if (this.data.pageIndex === this.data.totalPage && this.data.pageIndex > 1) {
-      step = this.data.total - step * (this.data.pageIndex - 1)
-    }
-    wx.showLoading({
-      title: '加载中',
-    })
-    setTimeout(() => {
-      for (let i = formNumber; i < formNumber + step; i++) {
-        newArr.push(i)
-      }
+
       this.setData({
         list: [...oldData, ...newArr],
         total: 34,

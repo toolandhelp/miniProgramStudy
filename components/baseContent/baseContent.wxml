@@ -1,0 +1,32 @@
+<view>
+  <view class="layout_horizontal top">
+    <view class="layout_horizontal userInfo">
+      <image class="userAvatar" src="https://www.contemporist.com/wp-content/uploads/2020/11/modern-home-open-living-spaces-091120-709-01.jpg" />
+      <view class="layout_vertical userNames">
+        <text class="name">Lola Bailey</text>
+        <view class="publishOrType">
+        <text>15分钟前</text>
+        <label>小视频</label>
+        </view> 
+      </view>
+    </view>
+    <view class="followOrReport">
+      <text>关注</text>
+      <icon class="icon-small" type="cancel" color="DarkGray" size="23"></icon>
+    </view>
+  </view>
+  <view class="summaryArticle">
+    <text>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+      容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
+      内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容容内容内容</text>
+  </view>
+  <view class="">
+    <image src="http://via.placeholder.com/100x100" />
+  </view>
+  <view>
+    转化
+    收藏
+    评论
+    点赞
+  </view>
+</view>
