@@ -114,7 +114,6 @@ Page({
       title: '加载中',
     })
     setTimeout(() => {
-      debugger
       // for (let i = formNumber; i < formNumber + step; i++) {
       //   //newArr.push(i)
       //   newArr.push()
@@ -135,41 +134,63 @@ Page({
             "KeyWords": "",
             "Order": true,
             "Page": 0,
-            "Rows": 0
+            "Rows": 8
           }
         }
         util.request_method_post_data(getlistUrl,para,(res) => {
           // debugger;
           if (res.Success) {
-            debugger
             newArr=res.Data.RspItemDatas;
+
+            var pageInfo=res.Data.RspPaginationData;
             //newArr.push(res.Data.RspItemDatas);
             console.log(res.Data);
+
+            this.setData({
+              list: [...oldData, ...newArr],
+              total: pageInfo.records,
+              totalPage: pageInfo.records,
+              refresherTriggered: false
+            })
+            if (step == 0) {
+              wx.showToast({
+                title: '暂无数据',
+                icon: 'none',
+                duration: 1000
+              })
+            } else {
+              wx.showToast({
+                title: '请求成功',
+                icon: 'success',
+                duration: 1000
+              })
+            }
+
           }
         });
       }
     }
 
 
-      this.setData({
-        list: [...oldData, ...newArr],
-        total: 34,
-        totalPage: Math.ceil(34 / 20),
-        refresherTriggered: false
-      })
-      if (step == 0) {
-        wx.showToast({
-          title: '暂无数据',
-          icon: 'none',
-          duration: 1000
-        })
-      } else {
-        wx.showToast({
-          title: '请求成功',
-          icon: 'success',
-          duration: 1000
-        })
-      }
+      // this.setData({
+      //   list: [...oldData, ...newArr],
+      //   total: 34,
+      //   totalPage: Math.ceil(34 / 20),
+      //   refresherTriggered: false
+      // })
+      // if (step == 0) {
+      //   wx.showToast({
+      //     title: '暂无数据',
+      //     icon: 'none',
+      //     duration: 1000
+      //   })
+      // } else {
+      //   wx.showToast({
+      //     title: '请求成功',
+      //     icon: 'success',
+      //     duration: 1000
+      //   })
+      // }
       wx.hideLoading()
     }, 1000)
   },

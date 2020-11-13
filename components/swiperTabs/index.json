@@ -1,6 +1,6 @@
 {
     "component": true,
     "usingComponents": {
-        "mp-icon":"../icon/icon"
+        "base-Content": "../baseContent/baseContent"
     }
 }

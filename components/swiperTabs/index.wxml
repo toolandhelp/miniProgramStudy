@@ -102,18 +102,19 @@
       <!-- 右边切入页面 （更多点击） -->
       <view wx:if="{{menus.attrData.length>5}}" class="float {{isRuleTrue?'isRuleShow':'isRuleHide'}} ">
         <view class="animation-element" animation="{{animation}}">
-          <scroll-view  scroll-y style="height:80%;">
-          <block wx:for="{{menus.attrData}}" wx:if="{{idx>=4}}" wx:for-index="idx" wx:key="attrId" wx:for-item="attrData" >
-            <view class='use'>
-              <view class='iconuse' data-attrId="{{attrData.attrId}}">{{attrData.attrName}}</view>
-              <ul class="useage" wx:for="{{attrData.subAttr}}" data-subAttrId="{{subAttr.subAttrId}}"
-                      wx:for-item="subAttr" wx:key="idx" wx:for-index="indx">
-                <!-- <li style="background:{{background}};">全部</li> -->
-                <li data-subAttrId="{{subAttr.subAttrId}}">{{subAttr.subAttrName}}</li>
-              </ul>
-            </view>
-          </block>
-        </scroll-view>
+          <scroll-view scroll-y style="height:80%;">
+            <block wx:for="{{menus.attrData}}" wx:if="{{idx>=4}}" wx:for-index="idx" wx:key="attrId"
+              wx:for-item="attrData">
+              <view class='use'>
+                <view class='iconuse' data-attrId="{{attrData.attrId}}">{{attrData.attrName}}</view>
+                <ul class="useage" wx:for="{{attrData.subAttr}}" data-subAttrId="{{subAttr.subAttrId}}"
+                  wx:for-item="subAttr" wx:key="idx" wx:for-index="indx">
+                  <!-- <li style="background:{{background}};">全部</li> -->
+                  <li data-subAttrId="{{subAttr.subAttrId}}">{{subAttr.subAttrName}}</li>
+                </ul>
+              </view>
+            </block>
+          </scroll-view>
           <view class='buttom'>
             <!-- <view class="animation-reset">重置</view> -->
             <view class="animation-button" bindtap="closeRight">完成</view>
@@ -132,6 +133,7 @@
           <slot name="tab-content-{{index}}"></slot>
         </scroll-view>
       </view>
+
     </swiper-item>
   </swiper>
 </view>

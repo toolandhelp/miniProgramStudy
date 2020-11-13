@@ -1,6 +1,5 @@
 {
     "pages": [
-        "components/baseContent/baseContent",
         "pages/test/index"
     ],
     "usingComponents": {"mp-icon":"./components/icon/icon"},

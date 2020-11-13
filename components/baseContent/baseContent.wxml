@@ -1,13 +1,14 @@
-<view>
+<view style="margin-top:10rpx;border-bottom: 10rpx solid LightGrey;">
   <view class="layout_horizontal top">
     <view class="layout_horizontal userInfo">
-      <image class="userAvatar" src="https://www.contemporist.com/wp-content/uploads/2020/11/modern-home-open-living-spaces-091120-709-01.jpg" />
+      <image class="userAvatar"
+        src="{{obj.HeadIcon}}" />
       <view class="layout_vertical userNames">
-        <text class="name">Lola Bailey</text>
+        <text class="name">{{obj.NickName}}</text>
         <view class="publishOrType">
-        <text>15分钟前</text>
-        <label>小视频</label>
-        </view> 
+          <text>15分钟前</text>
+          <label>图文</label>
+        </view>
       </view>
     </view>
     <view class="followOrReport">
@@ -16,17 +17,49 @@
     </view>
   </view>
   <view class="summaryArticle">
-    <text>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-      容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-      内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容容内容内容</text>
+    <text selectable="true">{{obj.ItemName}}
+    </text>
   </view>
-  <view class="">
-    <image src="http://via.placeholder.com/100x100" />
+  <view class="resourceContent">
+    <!-- 9宫格图片 -->
+    <ul class="layout_horizontal picContent">
+      <block wx:for="{{obj.ResourceObj}}" wx:key="imgSrc" wx:for-index="idx" wx:if="{{obj.ResourceObj.length>9?9:obj.ResourceObj.length}}">
+        <li style="background-image: url({{item.smallImgUrl}});" wx:if="{{idx<9}}"
+          class="picBoxBase picBox{{obj.ResourceObj.length>9?9:obj.ResourceObj.length}}">
+          <view class="picMore" wx:if="{{obj.ResourceObj.length>9&&idx==8}}"><text>+{{obj.ResourceObj.length-9}}</text></view>
+        </li>
+      </block>
+    </ul>
+    <!--视频-->
+    <!-- <view class="videoContent">
+      <video 
+      src="https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0300f240000bhgcprd5f2e3csruehf0&ratio=720p&line=0"
+      poster="https://pic.xiami.net/xiamiWeb/38a900832570e62830cebccabd1f32a7/f70bf56674bda2ce036db9c080c3a002-400x216.gif?x-oss-process=image/resize,limit_0,m_fill,s_300/quality,q_80"
+      >
+      </video> 
+    </view>-->
   </view>
-  <view>
-    转化
-    收藏
-    评论
-    点赞
+  <view class="layout_horizontal bottom">
+    <view class="">
+      <!-- <icon class="icon-small" type="cancel" color="DarkGray" size="23"></icon> -->
+      <mp-icon icon="share" color="DarkGray" size="{{23}}"></mp-icon>
+      <text>{{obj.ShareCount}}</text>
+    </view>
+    <view>
+      <!-- <icon class="icon-small" type="cancel" color="DarkGray" size="23"></icon> -->
+      <mp-icon icon="star" color="DarkGray" size="{{23}}"></mp-icon>
+      <text>收藏</text>
+    </view>
+    <view>
+      <!-- <icon class="icon-small" type="cancel" color="DarkGray" size="23"></icon> -->
+      <mp-icon icon="comment" color="DarkGray" size="{{23}}"></mp-icon>
+      <text>评论{{obj.commentss}}</text>
+    </view>
+    <view>
+      <!-- <icon class="icon-small" type="cancel" color="DarkGray" size="23"></icon> -->
+      <mp-icon icon="like" color="DarkGray" size="{{23}}"></mp-icon>
+      <text>{{obj.likes}}</text>
+    </view>
+
   </view>
 </view>
