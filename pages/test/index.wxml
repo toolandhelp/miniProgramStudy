@@ -19,11 +19,12 @@
 <block wx:for="{{tabs}}" wx:for-index="index" wx:key="title">
     <view class="contentBox"  slot="tab-content-{{index}}">
       <view class="totalList" wx:if="{{list.length && activeTab==index}}">
-        <base-Content wx:for="{{list}}" wx:for-item="obj" wx:for-index="idx" wx:key="item2" obj="{{obj}}" name="{{obj.ItemName}}">
-          <!-- {{item.title+":"+(item2+1)}} -->
-          <!-- {{item2.ItemName}} -->
-          <!-- <base-Content></base-Content> -->
-        </base-Content>
+        <block wx:if="{{tempShowType===0}}">
+        <base-Content wx:for="{{list}}" wx:for-item="obj" wx:for-index="idx" wx:key="item2" obj="{{obj}}" name="{{obj.ItemName}}"></base-Content>
+      </block>
+      <block wx:elif="{{tempShowType===1}}">
+        <speclification-Content wx:for="{{list}}" wx:for-item="obj" wx:for-index="idx" wx:key="item2" obj="{{obj}}" name="{{obj.ItemName}}"></speclification-Content>
+      </block>
       </view>
       <image wx:else class="nodata" mode="widthFix" src="/assets/images/noData.png"></image>
     </view>

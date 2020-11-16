@@ -4,7 +4,7 @@
       <scroll-view scroll-x scroll-into-view="item_{{currentView}}">
         <view class="weui-tabs-bar__content">
           <block wx:for="{{tabs}}" wx:key="title">
-            <view id="item_{{index}}" data-existattr="{{item.existAttr}}" data-typeattrid="{{item.typeAttrId}}"
+            <view id="item_{{index}}" data-url="" data-showtype="{{item.showStyle}}" data-typeattrid="{{item.typeAttrId}}"
               class="weui-tabs-bar__item"
               style="background-color: {{tabBackgroundColor}}; color: {{activeTab === index ? tabActiveTextColor : tabInactiveTextColor}};"
               bindtap="handleTabClick" data-index="{{index}}">

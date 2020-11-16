@@ -2,6 +2,7 @@
     "navigationBarTitleText": "swiperTabs",
     "usingComponents": {
         "swiper-tabs": "../../components/swiperTabs/index",
-        "base-Content":"../../components/baseContent/baseContent"
+        "base-Content":"../../components/baseContent/baseContent",
+        "speclification-Content":"../../components/baseContent/specificationContent"
     }
 }

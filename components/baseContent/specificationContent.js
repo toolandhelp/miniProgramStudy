@@ -31,7 +31,7 @@ Component({
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
   attached: function () { }, // 此处attached的声明会被lifetimes字段中的声明覆盖
   ready: function () { 
-    //console.log(this.data.obj.ResourceObj.length)
+    console.log(`准备完成`)
 
   },
 

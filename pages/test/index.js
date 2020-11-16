@@ -23,6 +23,7 @@ Page({
     pageIndex: 1,/*当前页数*/
     totalPage: 1,/*总页数*/
     total: 0,/*总数目*/
+    tempShowType: 0 /* 临时显示类型 */
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -102,7 +103,7 @@ Page({
     }
 
     
-       // 获取档案库数据
+    // 获取档案库数据
      var getlistUrl = baseUrl + 'ItemList/GetItemListData';
     // if (this.data.activeTab % 2 != 0) {
     //   step = 0;
@@ -199,7 +200,8 @@ Page({
     this.setData({
       activeTab: e.detail.index,
       pageIndex: 1,
-      list: []
+      list: [],
+      tempShowType:e.detail.showtype,
     })
     this.getList();
   },
@@ -215,6 +217,8 @@ Page({
   /* app菜单转换 处理第一级菜单数据*/
   appMenusCreate(menusData) {
     var tabs = new Array();
+    var pdfTab= new Array('文本','建筑规范');
+
     if (menusData != null && menusData != '') {
       // web菜单
       if (menusData.WebMenus != null && menusData.WebMenus != '') {
@@ -222,7 +226,8 @@ Page({
           tabs[i] = {
             title: menu.MenuName,
             typeAttrId: '',
-            attrData:  []
+            attrData:  [],
+            showStyle:0
           }
         });
       }
@@ -252,7 +257,8 @@ Page({
           tabs.push({
             title: menu.ItemAttributesFullName,
             typeAttrId: menu.ItemAttributesId,
-            attrData: attrData
+            attrData: attrData,
+            showStyle: pdfTab.indexOf(menu.ItemAttributesFullName) === -1 ? 0 : 1
           });
         });
         //属性数据创造

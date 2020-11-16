@@ -153,11 +153,12 @@ module.exports =
           methods: {
             handleTabClick: function handleTabClick(e) {
               var index = e.currentTarget.dataset.index;
+              var showtype = e.currentTarget.dataset.showtype;
               this.setData({
                 activeTab: index,
                 activeAttrTabIdx: 0
               });
-              this.triggerEvent('tabclick', { index: index });
+              this.triggerEvent('tabclick', { index: index ,showtype:showtype });
             },
             handleSwiperChange: function handleSwiperChange(e) {
               var index = e.detail.current;

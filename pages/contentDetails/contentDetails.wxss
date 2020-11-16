@@ -1,0 +1,142 @@
+/* view {
+  border: 1px solid gray;
+} */
+
+/*横向布局  */
+.layout_horizontal {
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
+
+/*纵向布局  */
+.layout_vertical {
+  /* height: 100rpx; */
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: column;
+}
+
+.center {
+  margin: 0rpx 20rpx;
+}
+
+/*项目标题 ============================*/
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+/* 项目发布用户信息  ====================*/
+.top {
+  height: 120rpx;
+  margin: 15rpx 0rpx;
+  /* justify-content: center; */
+}
+
+.userInfo {
+  /* margin: 15px; */
+  flex: 1;
+}
+
+/*头部图片 */
+.userAvatar {
+  border-radius: 90rpx;
+  height: 90rpx;
+  width: 90rpx;
+  align-self: center;
+}
+
+.userNames {
+  margin: 0rpx 10rpx;
+  align-self: center;
+}
+
+.name {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.publishTime {
+  width: 150px;
+}
+
+.publishTime text {
+  font-size: 28rpx;
+  color: gray;
+}
+
+.follow {
+  flex: 1;
+  /* background: red; */
+  text-align: right;
+  margin: auto;
+  /* margin-right: 15rpx; */
+}
+
+.follow text {
+  font-size: 26rpx;
+  margin-left: 10rpx;
+  padding: 10rpx 30rpx;
+  border-radius: 15rpx;
+  margin-right: 10rpx;
+}
+
+.selected {
+  color: white;
+  background-color: rgb(235, 91, 91);
+}
+
+.noSelected {
+  background-color: white;
+  color: rgb(235, 91, 91);
+  border: 2rpx solid rgb(235, 91, 91);
+}
+
+/* 下载 定制样式 ==============================*/
+.downloadAndCustom {
+  margin: 15rpx 0rpx;
+}
+
+.downloadAndCustom button {
+  width: 80%;
+  color: white;
+  background-color: rgb(230, 126, 126);
+}
+
+/*项目属性 ==================================*/
+.attrBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10rpx;
+  border: 4rpx solid #f3f0f0;
+  border-radius: 15rpx;
+}
+
+.attrItem {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1%;
+  width: 48%;
+  height: auto;
+}
+
+.attrtext {
+  margin: 15rpx 0 15rpx 20rpx;
+  align-self: flex-start;
+  flex: 1 0 auto;
+  color: gray;
+}
+.attrvalue{
+  margin-left: 5rpx;
+}
+
+/*HTML内容 ==========================*/
+.detailsData{
+  margin-top: 30rpx;
+}

@@ -1,0 +1,40 @@
+<view>
+  <view class="layout_vertical center">
+    <view class="title">
+      {{detailsData.ItemEntity.ItemName}}
+    </view>
+    <view class="layout_horizontal top">
+      <view class="layout_horizontal userInfo">
+        <image class="userAvatar" src="{{detailsData.ItemEntity.HeadIcon}}" />
+        <view class="layout_vertical userNames">
+          <text class="name">{{detailsData.ItemEntity.NickName}}</text>
+          <view class="publishTime">
+            <!-- <text>15分钟前</text> -->
+            <text>{{detailsData.ItemEntity.CreateDate}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="follow">
+        <text class="noSelected">关注</text>
+      </view>
+    </view>
+    <view class="layout_horizontal downloadAndCustom">
+      <button>下载￥5</button>
+      <button>立即定制</button>
+    </view>
+    <view class="attrBox" wx:if="{{detailsData.ItemAttributesEntities.length>0}}">
+      <block wx:for="{{detailsData.ItemAttributesEntities}}" wx:for-item="attr" wx:for-index="idx" wx:key="attrId">
+        <view class="attrItem" wx:if="{{attr.ItemAttributesFullName.length>0}}">
+          <text class="attrtext">{{attr.ItemAttributesFullName}}：</text>
+          <text class="attrvalue">{{attr.ItemSubAttributeFullName}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="detailsData">
+      <rich-text nodes="{{detailsData.ItemEntity.ItemContentBefore}}"></rich-text>
+    </view>
+    <view>
+      评论区域（评论组件）
+    </view>
+  </view>
+</view>

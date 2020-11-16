@@ -1,0 +1,100 @@
+/* view {
+  border: 1px solid gray;
+} */
+
+/*横向布局  */
+.layout_horizontal {
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
+
+/*纵向布局  */
+.layout_vertical {
+  /* height: 100rpx; */
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: column;
+}
+
+.content {
+  margin: 15rpx 15rpx;
+   /*布局居中  */
+   align-items: center;
+}
+
+.effect {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  /* webkit-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+	moz-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+	o-box-shadow:0px 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset; */
+}
+
+.leftImage {
+  width: 240rpx;
+  height: 320rpx;
+}
+
+.rightContent {
+  margin: 15rpx;
+}
+
+.title text {
+  /*定义为自适应布局  */
+  display: -webkit-box;
+  word-break: break-all;
+  /*超出文字用省略号代替  */
+  text-overflow: ellipsis;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  /*多出不分隐藏  */
+  overflow: hidden;
+  /*竖直方向的超出和隐藏  */
+  -webkit-box-orient: vertical;
+  /* 设定行数为3  */
+  -webkit-line-clamp: 2;
+
+  /* white-space: nowrap;   */
+}
+
+.viewAndLike {
+  margin: 30rpx 0rpx;
+  color: gray;
+}
+
+/*用户头像及发布时间*/
+.userInfo {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userAvatar {
+  border-radius: 70rpx;
+  height: 70rpx;
+  width: 70rpx;
+  align-self: center;
+}
+
+.name {
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-left: -55rpx;
+  width: 140rpx;
+  /*定义为自适应布局  */
+  display: -webkit-box;
+  word-break: break-all;
+  /*超出文字用省略号代替  */
+  text-overflow: ellipsis;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  /*多出不分隐藏  */
+  overflow: hidden;
+  /*竖直方向的超出和隐藏  */
+  -webkit-box-orient: vertical;
+  /* 设定行数为3  */
+  -webkit-line-clamp: 1;
+}
+
+.publishTime {
+  color: gray;
+}
