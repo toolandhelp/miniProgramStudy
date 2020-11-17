@@ -48,6 +48,14 @@ Component({
         // 更新属性和数据的方法与更新页面数据的方法类似
       })
     },
+    share: function () {
+      console.log(`分享点击`);
+      wx.showShareMenu({
+        withShareTicket: true,
+        menus: ['shareAppMessage', 'shareTimeline']
+      })
+    }
+
 
   }
 

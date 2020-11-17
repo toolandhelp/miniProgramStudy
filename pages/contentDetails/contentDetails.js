@@ -9,6 +9,7 @@ Page({
    */
   data: {
     detailsData: Object,
+    showType:0,
    // detailsHtml:''
   },
 
@@ -17,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     var id = options.detailsId;
+    var showType=options.showType;
     if (id.length == 0) {
       wx.showToast({
         title: 'ID错误',
@@ -31,8 +33,28 @@ Page({
     setTimeout(() => {
       this.getDetails(id);
 
+      this.setData({ showType: showType }); 
+
+      console.log(showType);
+      console.log(this.data.showType);
+
      wx.hideLoading()
     }, 1000);
+
+    // wx.downloadFile({
+    //   // 示例 url，并非真实存在
+    //   url: 'https://www.pic1.jzbl.com/itemfiles/3eb62c63-e608-41bf-95f4-30312481e96e/411c1958-5870-4169-b23b-a65734f95d26/6367909652522412103592130.pdf',
+    //   success: function (res) {
+    //     const filePath = res.tempFilePath
+    //     console.log(filePath);
+    //     wx.openDocument({
+    //       filePath: filePath,
+    //       success: function (res) {
+    //         console.log('打开文档成功')
+    //       }
+    //     })
+    //   }
+    // })
 
   },
 

@@ -1,7 +1,8 @@
 {
     "pages": [
         "pages/test/index",
-        "pages/contentDetails/contentDetails"
+        "pages/contentDetails/contentDetails",
+        "pages/contentDetails/pdfDetails"
     ],
     "usingComponents": {"mp-icon":"./components/icon/icon"},
     "window": {

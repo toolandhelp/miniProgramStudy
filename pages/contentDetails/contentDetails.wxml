@@ -18,9 +18,9 @@
         <text class="noSelected">关注</text>
       </view>
     </view>
-    <view class="layout_horizontal downloadAndCustom">
-      <button>下载￥5</button>
-      <button>立即定制</button>
+    <view class="layout_horizontal downloadAndCustom" wx:if="{{detailsData.ItemEntity.IsCustomized||detailsData.ItemEntity.IsDownload}}">
+      <button wx:if="{{detailsData.ItemEntity.IsDownload}}">下载￥5</button>
+      <button wx:if="{{detailsData.ItemEntity.IsCustomized}}">立即定制</button>
     </view>
     <view class="attrBox" wx:if="{{detailsData.ItemAttributesEntities.length>0}}">
       <block wx:for="{{detailsData.ItemAttributesEntities}}" wx:for-item="attr" wx:for-index="idx" wx:key="attrId">
@@ -33,8 +33,16 @@
     <view class="detailsData">
       <!-- {{detailsHtml}} -->
       <!-- <rich-text nodes="{{detailsData.ItemEntity.ItemContentBefore}}"></rich-text> -->
+      <!-- <block wx:if="{{showType==0}}"> -->
       <parser html="{{detailsData.ItemEntity.ItemContentBefore}}"  />
-      <web-view src="https://www.pic1.jzbl.com/itemfiles/3eb62c63-e608-41bf-95f4-30312481e96e/411c1958-5870-4169-b23b-a65734f95d26/6367909652522412103592130.pdf"></web-view>
+      <!-- </block> -->
+      <block wx:if="{{showType==1}}">
+        <!-- <web-view src="{{detailsData.PdfInfo.FilePath}}"  /> -->
+        <view class="layout_horizontal pdfMore">
+          <navigator class="pdfbtn" url="/pages/contentDetails/pdfDetails?uri={{detailsData.PdfInfo.FilePath}}&name={{detailsData.PdfInfo.FileName}}">查看更多详情</navigator>
+        </view>
+      </block>
+      <!-- <web-view src="https://www.pic1.jzbl.com/itemfiles/3eb62c63-e608-41bf-95f4-30312481e96e/411c1958-5870-4169-b23b-a65734f95d26/6367909652522412103592130.pdf"></web-view> -->
     </view>
     <view>
       评论区域（评论组件）

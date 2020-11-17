@@ -1,5 +1,5 @@
 <view style="margin-top: 10rpx;border-bottom: 5rpx solid LightGrey;">
-  <navigator url="/pages/contentDetails/contentDetails?detailsId={{obj.ItemId}}">
+  <navigator url="/pages/contentDetails/contentDetails?detailsId={{obj.ItemId}}&showType=1">
     <view class="layout_horizontal content">
       <view class="leftImage effect">
         <image class="leftImage" src="{{obj.ResourceObj==''?obj.ItemTitleImg:obj.ResourceObj[0].smallImgUrl}}">

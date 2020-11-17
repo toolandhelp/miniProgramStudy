@@ -43,10 +43,14 @@
     </view>
   </navigator>
   <view class="layout_horizontal bottom">
-    <view class="">
+    <view>
       <!-- <icon class="icon-small" type="cancel" color="DarkGray" size="23"></icon> -->
-      <mp-icon icon="share" color="DarkGray" size="{{23}}"></mp-icon>
-      <text>{{obj.ShareCount}}</text>
+      <!-- <mp-icon icon="share" color="DarkGray" size="{{23}}"></mp-icon>
+              <text>{{obj.ShareCount}}</text> -->
+      <button class="share" open-type='share' style=" width: auto;">
+        <mp-icon icon="share" color="DarkGray" size="{{23}}"></mp-icon>
+        <text>{{obj.ShareCount}}</text>
+      </button>
     </view>
     <view>
       <!-- <icon class="icon-small" type="cancel" color="DarkGray" size="23"></icon> -->

@@ -140,3 +140,16 @@
 .detailsData{
   margin-top: 30rpx;
 }
+
+/*PDF 按钮更多 ========================*/
+.pdfMore{
+  margin: 15rpx;
+  justify-content: center;
+  place-content: center;
+}
+.pdfbtn{
+    color: white;
+    background-color: #c35656;
+    padding: 20rpx;
+    border-radius: 10rpx;
+}
