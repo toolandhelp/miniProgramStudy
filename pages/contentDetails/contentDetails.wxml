@@ -31,7 +31,10 @@
       </block>
     </view>
     <view class="detailsData">
-      <rich-text nodes="{{detailsData.ItemEntity.ItemContentBefore}}"></rich-text>
+      <!-- {{detailsHtml}} -->
+      <!-- <rich-text nodes="{{detailsData.ItemEntity.ItemContentBefore}}"></rich-text> -->
+      <parser html="{{detailsData.ItemEntity.ItemContentBefore}}"  />
+      <web-view src="https://www.pic1.jzbl.com/itemfiles/3eb62c63-e608-41bf-95f4-30312481e96e/411c1958-5870-4169-b23b-a65734f95d26/6367909652522412103592130.pdf"></web-view>
     </view>
     <view>
       评论区域（评论组件）

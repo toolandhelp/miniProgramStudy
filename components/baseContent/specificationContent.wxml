@@ -1,24 +1,24 @@
 <view style="margin-top: 10rpx;border-bottom: 5rpx solid LightGrey;">
-  <view class="layout_horizontal content">
-    <view class="leftImage effect">
-      <image class="leftImage"
-        src="{{obj.ResourceObj==''?obj.ItemTitleImg:obj.ResourceObj[0].smallImgUrl}}">
-      </image>
+  <navigator url="/pages/contentDetails/contentDetails?detailsId={{obj.ItemId}}">
+    <view class="layout_horizontal content">
+      <view class="leftImage effect">
+        <image class="leftImage" src="{{obj.ResourceObj==''?obj.ItemTitleImg:obj.ResourceObj[0].smallImgUrl}}">
+        </image>
+      </view>
+      <view class="rightContent layout_vertical">
+        <view class="title">
+          <text>{{obj.ItemName}}</text>
+        </view>
+        <view class="viewAndLike">
+          <mp-icon icon="eyes-on" color="DarkGray" size="{{23}}"></mp-icon> {{obj.Views}}
+          <mp-icon icon="star" color="DarkGray" size="{{23}}"></mp-icon> {{obj.likes}}
+        </view>
+        <view class="layout_horizontal userInfo">
+          <image class="userAvatar" src="{{obj.HeadIcon}}" />
+          <text class="name">Lola Bailey</text>
+          <text class="publishTime">2019-10-11</text>
+        </view>
+      </view>
     </view>
-    <view class="rightContent layout_vertical">
-      <view class="title">
-        <text>{{obj.ItemName}}</text>
-      </view>
-      <view class="viewAndLike">
-        <mp-icon icon="eyes-on" color="DarkGray" size="{{23}}"></mp-icon> {{obj.Views}}
-        <mp-icon icon="star" color="DarkGray" size="{{23}}"></mp-icon> {{obj.likes}}
-      </view>
-      <view class="layout_horizontal userInfo">
-        <image class="userAvatar"
-          src="{{obj.HeadIcon}}" />
-        <text class="name">Lola Bailey</text>
-        <text class="publishTime">2019-10-11</text>
-      </view>
-    </view>
-  </view>
+  </navigator>
 </view>
