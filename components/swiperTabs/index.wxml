@@ -1,4 +1,5 @@
 <view class="weui-tabs">
+  <mp-searchbar ext-class="page__bd" bindselectresult="selectResult" search="{{search}}" />
   <view class="weui-tabs-bar__scrollMenuBorder">
     <view class="weui-tabs-bar__wrp {{scrollViewClass}}">
       <scroll-view scroll-x scroll-into-view="item_{{currentView}}">

@@ -1,6 +1,7 @@
 {
     "component": true,
     "usingComponents": {
-        "base-Content": "../baseContent/baseContent"
+        "base-Content": "../baseContent/baseContent",
+        "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
     }
 }

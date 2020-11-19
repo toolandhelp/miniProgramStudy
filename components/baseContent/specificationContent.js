@@ -7,16 +7,6 @@ Component({
     obj: { type:Object ,value:null },  
     // obj: { type: Array, value: [] },
     name:{type:String,value:''}
-    // obj: [{
-    //   user: {
-    //     nickName: "用户名",
-    //     headIcon: "https://www.contemporist.com/wp-content/uploads/2020/11/modern-home-open-living-spaces-091120-709-01.jpg"
-    //   },
-    //   title:"内容标题声明的的生命豆沙粉的理解 尼斯阿里大家了，是否卡洛斯的i你把的实力案例阿耐何不昆士兰士大夫。",
-    //   ResourceObj: [
-    //     {imgSrc: "https://www.contemporist.com/wp-content/uploads/2020/11/modern-home-open-living-spaces-091120-709-01.jpg"},
-    //   ]
-    // }]
   },
 
   data: {}, // 私有数据，可用于模板渲染
